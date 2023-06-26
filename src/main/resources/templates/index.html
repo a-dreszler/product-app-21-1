@@ -3,13 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Produkty - aplikacja</title>
+        <link rel="stylesheet" th:href="@{/styles.css}" href="../static/styles.css">
     </head>
     <body>
         <header>
             <h1>Hurtownia Januszex sp. z.o.o.</h1>
         </header>
         <section>
-            <p>Witamy w bazie danych naszych produktów!</p>
+            <h2>Witamy w bazie danych naszych produktów!</h2>
             <p>Wybierz kategorię:</p>
             <ul>
                 <li><a th:href="@{/lista}" href="#">Wszystkie produkty</a></li>
