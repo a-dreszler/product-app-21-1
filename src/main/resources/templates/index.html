@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Produkty - aplikacja</title>
+        <link rel="stylesheet" th:href="@{/styles.css}" href="../static/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Hurtownia Januszex sp. z.o.o.</h1>
+        </header>
+        <section>
+            <h2>Witamy w bazie danych naszych produktów!</h2>
+            <p>Wybierz kategorię:</p>
+            <ul>
+                <li><a th:href="@{/lista}" href="#">Wszystkie produkty</a></li>
+                <li th:each="category: ${T(pl.adreszler.productapp.Category).values()}">
+                    <a th:text="${category.namePl}" th:href="@{|/lista?kategoria=${category}|}" href="#">
+                        Testowa kategoria 1
+                    </a>
+                </li>
+                <li th:remove="all">
+                    <a href="#">
+                        Testowa kategoria 2
+                    </a>
+                </li>
+                <li th:remove="all">
+                    <a href="#">
+                        Testowa kategoria 3
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </body>
+</html>
