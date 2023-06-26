@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 class ProductRepository {
@@ -28,15 +29,9 @@ class ProductRepository {
         return products;
     }
 
-    BigDecimal sumPrices(Category category) {
-        if (category == null) {
-            return products.stream()
-                    .map(Product::getPrice)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add);
-        }
+    Set<Product> findByCategory(Category category) {
         return products.stream()
                 .filter(product -> product.getCategory() == category)
-                .map(Product::getPrice)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .collect(Collectors.toSet());
     }
 }

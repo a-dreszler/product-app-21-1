@@ -13,8 +13,8 @@
             <p>Wybierz kategorię:</p>
             <ul>
                 <li><a th:href="@{/lista}" href="#">Wszystkie produkty</a></li>
-                <li th:each="category: ${categories}">
-                    <a th:text="${category.namePl}" th:href="@{|/lista?kategoria=${category.namePl}|}" href="#">
+                <li th:each="category: ${T(pl.adreszler.productapp.Category).values()}">
+                    <a th:text="${category.namePl}" th:href="@{|/lista?kategoria=${category}|}" href="#">
                         Testowa kategoria 1
                     </a>
                 </li>
