@@ -1,4 +1,4 @@
-package pl.adreszler.productapp21_1;
+package pl.adreszler.productapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

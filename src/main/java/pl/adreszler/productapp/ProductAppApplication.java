@@ -1,4 +1,4 @@
-package pl.adreszler.productapp21_1;
+package pl.adreszler.productapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

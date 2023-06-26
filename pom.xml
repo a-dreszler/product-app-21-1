@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.adreszler</groupId>
-    <artifactId>product-app-21_1</artifactId>
+    <artifactId>product-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>product-app-21_1</name>
-    <description>product-app-21_1</description>
+    <description>product-app</description>
     <properties>
         <java.version>20</java.version>
     </properties>
