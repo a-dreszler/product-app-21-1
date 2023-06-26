@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista produktów</title>
+    </head>
+    <body>
+        <header>
+            <h1>Product Database</h1>
+        </header>
+        <section>
+            <div th:if="${products ne null and !products.isEmpty}">
+                <h2 th:unless="${category}">Lista produktów</h2>
+                <h2 th:if="${category}" th:text="|Lista produktów kategorii ${category.namePl}|">
+                    Lista produktów kategorii testowej
+                </h2>
+                <ul>
+                    <li th:each="product: ${products}"
+                        th:object="${product}"
+                        th:text="|*{name} *{producer} *{price}zł|">
+                        Nazwa1 Producent1 21.37zł
+                    </li>
+                    <li>Nazwa2 Producent2 21.37zł</li>
+                    <li>Nazwa3 Producent3 21.37zł</li>
+                </ul>
+                <p th:text="|Suma cen produktów: ${sumOfPrices}zł|">Suma cen produktów: 64.11zł</p>
+            </div>
+            <p th:unless="${products ne null and !products.isEmpty}">
+                W obecnej chwili nie mamy produktów podanej kategorii
+            </p>
+        </section>
+    </body>
+</html>
