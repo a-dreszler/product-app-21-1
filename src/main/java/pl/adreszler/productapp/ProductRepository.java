@@ -13,16 +13,20 @@ class ProductRepository {
     private final Set<Product> products = new HashSet<>();
 
     public ProductRepository() {
-        addProduct("Czekolada milka", Category.GROCERY, BigDecimal.valueOf(3.99));
-        addProduct("Mleko mlekovita 3.2%", Category.GROCERY, BigDecimal.valueOf(3.29));
-        addProduct("Cukier Diamant", Category.GROCERY, BigDecimal.valueOf(4.99));
-        addProduct("Rękawiczki do sprzątania Jan Niezbędny", Category.HOUSEHOLD, BigDecimal.valueOf(4.99));
-        addProduct("Płyn do naczyń Ludwik miętowy", Category.HOUSEHOLD, BigDecimal.valueOf(2.99));
-        addProduct("Opel w gazie", Category.DIFFERENT, BigDecimal.valueOf(14999.99));
+        addTestProduct("Czekolada milka", Category.GROCERY, BigDecimal.valueOf(3.99));
+        addTestProduct("Mleko mlekovita 3.2%", Category.GROCERY, BigDecimal.valueOf(3.29));
+        addTestProduct("Cukier Diamant", Category.GROCERY, BigDecimal.valueOf(4.99));
+        addTestProduct("Rękawiczki do sprzątania Jan Niezbędny", Category.HOUSEHOLD, BigDecimal.valueOf(4.99));
+        addTestProduct("Płyn do naczyń Ludwik miętowy", Category.HOUSEHOLD, BigDecimal.valueOf(2.99));
+        addTestProduct("Opel w gazie", Category.DIFFERENT, BigDecimal.valueOf(14999.99));
     }
 
-    void addProduct(String name, Category category, BigDecimal price) {
+    private void addTestProduct(String name, Category category, BigDecimal price) {
         products.add(new Product(name, category, price));
+    }
+
+    void addProduct(Product product) {
+        products.add(product);
     }
 
     public Set<Product> findAll() {

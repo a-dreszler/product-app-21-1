@@ -8,14 +8,15 @@
         <header>
             <h1>Hurtownia Januszex sp. z.o.o.</h1>
         </header>
+        <p><a th:href="@{${referer}}" href="#">Powrót do listy</a></p>
         <form action="/add" method="post" th:object="${product}">
             <div>
                 <label for="name" th:field="*{name}">Nazwa</label>
-                <input id="name" type="text" th:field="*{name}">
+                <input id="name" type="text" th:field="*{name}" required>
             </div>
             <div>
                 <label for="category" th:field="*{category}">Kategoria</label>
-                <select id="category" th:field="*{category}" th:remove="all-but-first">
+                <select id="category" th:field="*{category}" th:remove="all-but-first" required>
                     <option th:each="category: ${T(pl.adreszler.productapp.Category).values()}"
                             th:text="${category.namePl}"
                             th:value="${category}">Testowa kategoria 1</option>
@@ -25,7 +26,7 @@
             </div>
             <div>
                 <label for="price" th:field="*{price}">Cena</label>
-                <input id="price" type="number" th:field="*{price}" step="0.01" min="0">
+                <input id="price" type="number" th:field="*{price}" step="0.01" min="0" required>
             </div>
             <button type="submit">
                 Dodaj

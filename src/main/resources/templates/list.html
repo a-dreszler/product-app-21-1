@@ -14,6 +14,7 @@
                 Lista produktów kategorii testowej
             </h2>
             <p><a th:href="@{/add}" href="#">Dodaj produkt</a></p>
+            <p><a th:href="@{/}" href="#">Powrót do strony głównej</a></p>
             <div th:if="${products ne null and !products.isEmpty}">
                 <ul th:remove="all-but-first">
                     <li th:each="product: ${products}"

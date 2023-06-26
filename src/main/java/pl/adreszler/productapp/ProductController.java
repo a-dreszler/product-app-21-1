@@ -3,6 +3,8 @@ package pl.adreszler.productapp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
@@ -11,8 +13,8 @@ import java.util.Set;
 @Controller
 class ProductController {
 
-    private ProductRepository productRepository;
-    private ProductService productService;
+    private final ProductRepository productRepository;
+    private final ProductService productService;
 
     public ProductController(ProductRepository productRepository, ProductService productService) {
         this.productRepository = productRepository;
@@ -40,5 +42,21 @@ class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("sumOfPrices", sumOfPrices);
         return "list";
+    }
+
+    @GetMapping("/add")
+    String addForm(@RequestHeader(value = "Referer", required = false) String referer, Model model) {
+        model.addAttribute("product", new Product());
+        if (referer != null) {
+            model.addAttribute("referer", referer);
+        }
+
+        return "add";
+    }
+
+    @PostMapping("/add")
+    String add(Product product) {
+        productRepository.addProduct(product);
+        return "redirect:/lista";
     }
 }
