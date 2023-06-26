@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dodaj produkt</title>
+    </head>
+    <body>
+        <header>
+            <h1>Hurtownia Januszex sp. z.o.o.</h1>
+        </header>
+        <form action="/add" method="post" th:object="${product}">
+            <div>
+                <label for="name" th:field="*{name}">Nazwa</label>
+                <input id="name" type="text" th:field="*{name}">
+            </div>
+            <div>
+                <label for="category" th:field="*{category}">Kategoria</label>
+                <select id="category" th:field="*{category}" th:remove="all-but-first">
+                    <option th:each="category: ${categories}"
+                            th:text="${category.namePl}"
+                            th:value="${category}">Testowa kategoria 1</option>
+                    <option>Testowa kategoria 2</option>
+                    <option>Testowa kategoria 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="price" th:field="*{price}">Cena</label>
+                <input id="price" type="number" th:field="*{price}" step="0.01" min="0">
+            </div>
+            <button type="submit">
+                Dodaj
+            </button>
+        </form>
+    </body>
+</html>

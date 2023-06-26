@@ -6,22 +6,23 @@
     </head>
     <body>
         <header>
-            <h1>Product Database</h1>
+            <h1>Hurtownia Januszex sp. z.o.o.</h1>
         </header>
         <section>
+            <h2 th:unless="${category}">Lista produktów</h2>
+            <h2 th:if="${category}" th:text="|Lista produktów kategorii ${category.namePl}|">
+                Lista produktów kategorii testowej
+            </h2>
+            <p><a th:href="@{/add}" href="#">Dodaj produkt</a></p>
             <div th:if="${products ne null and !products.isEmpty}">
-                <h2 th:unless="${category}">Lista produktów</h2>
-                <h2 th:if="${category}" th:text="|Lista produktów kategorii ${category.namePl}|">
-                    Lista produktów kategorii testowej
-                </h2>
-                <ul>
+                <ul th:remove="all-but-first">
                     <li th:each="product: ${products}"
                         th:object="${product}"
-                        th:text="|*{name} *{producer} *{price}zł|">
-                        Nazwa1 Producent1 21.37zł
+                        th:text="|*{name}, kategoria: *{category.namePl}, cena: *{price}zł|">
+                        Nazwa1, kategoria: kategoria1, cena: 21.37zł
                     </li>
-                    <li>Nazwa2 Producent2 21.37zł</li>
-                    <li>Nazwa3 Producent3 21.37zł</li>
+                    <li>Nazwa2, kategoria: kategoria2, cena: 21.37zł</li>
+                    <li>Nazwa3, kategoria: kategoria3, cena: 21.37zł</li>
                 </ul>
                 <p th:text="|Suma cen produktów: ${sumOfPrices}zł|">Suma cen produktów: 64.11zł</p>
             </div>
